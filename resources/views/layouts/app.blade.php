@@ -48,7 +48,19 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    @if(isset(Auth::user()->adm))
+                        @if(Auth::user()->adm)
+                            Usuarios
+                            Proveedores
+                            Items
+                            Suministros
+                        @else
+                            Existencias 
+                            Recepción 
+                            Consumo
+                            Suministro
+                        @endif
+                    @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

@@ -57,15 +57,7 @@ class RegisterController extends Controller
         ]
         );
     }
-    public function messages()
-    {
-        return [
-            'email.required' => 'An email address is required',
-            'email.email' => 'The email address must be valid',
-            'password.confirmed'=>'Re-type your password as password_confirmation, passwords does not match'
-        ];
 
-    }
 
     /**
      * Create a new user instance after a valid registration.
