@@ -14,7 +14,6 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    <!--@vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -84,6 +83,18 @@
                 </div>
             </div>
         </nav>
+@if (session('mensajeOk'))
+<div class="alert alert-success px-5 mx-5" role="alert" id="m">
+{{session('mensajeOk')}}
+<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+</div>
+@endif
+@if (session('messages'))
+<div class="alert alert-success px-5 mx-5" role="alert" id="m">
+{{session('messages')}}
+<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+</div>
+@endif
 
         <main class="py-4">
             @yield('content')
