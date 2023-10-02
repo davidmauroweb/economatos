@@ -50,15 +50,15 @@
                     <ul class="navbar-nav me-auto">
                     @if(isset(Auth::user()->adm))
                         @if(Auth::user()->adm)
-                            Usuarios
-                            Proveedores
-                            Items
-                            Suministros
+                        <ul><i class="bi bi-person-fill"></i> Usuarios  </ul>
+                        <ul><i class="bi bi-box-seam-fill"></i> Proveedores  </ul>
+                        <ul><i class="bi bi-bag-fill"></i> Items  </ul>
+                        <ul><i class="bi bi-list-check"></i> Suministros </ul>
                         @else
-                            Existencias 
-                            Recepción 
-                            Consumo
-                            Suministro
+                        <ul><i class="bi bi-bag-fill"></i> Existencias</ul>
+                        <ul><i class="bi bi-truck"></i> Recepción </ul>
+                        <ul><i class="bi bi-activity"></i> Consumo </ul>
+                        <ul><i class="bi bi-list-check"></i> Suministros </ul>
                         @endif
                     @endif
                     </ul>
@@ -98,6 +98,12 @@
 @if (session('mensajeOk'))
 <div class="alert alert-success px-5 mx-5" role="alert" id="m">
 {{session('mensajeOk')}}
+<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+</div>
+@endif
+@if (session('mensajeNo'))
+<div class="alert alert-warning px-5 mx-5" role="alert" id="m">
+{{session('mensajeNo')}}
 <a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
 </div>
 @endif
