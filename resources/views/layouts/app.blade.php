@@ -31,7 +31,17 @@
     $( "#datepicker" ).datepicker();
     } );
     </script>
-
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+               -webkit-appearance: none;
+                margin: 0;
+        }
+ 
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
 
 </head>
 <body>
@@ -50,7 +60,7 @@
                     <ul class="navbar-nav me-auto">
                     @if(isset(Auth::user()->adm))
                         @if(Auth::user()->adm)
-                        <ul><i class="bi bi-person-fill"></i> Usuarios  </ul>
+                        <a class="navbar-brand" href="{{ url('/usuarios') }}"><ul><i class="bi bi-person-fill"></i> Economatos  </ul></a>
                         <ul><i class="bi bi-box-seam-fill"></i> Proveedores  </ul>
                         <ul><i class="bi bi-bag-fill"></i> Items  </ul>
                         <ul><i class="bi bi-list-check"></i> Suministros </ul>
