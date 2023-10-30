@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{HomeController,UsuariosController};
+use App\Http\Controllers\{HomeController,UsuariosController,ItemsController};
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Muni-Lista de usuarios
 Route::group(['middleware' => 'admin'], function () {
@@ -27,4 +26,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/usuarios', [UsuariosController::class, 'store'])->name('usuarios.store');
     Route::put('/usuarios/{usuarios}', [UsuariosController::class, 'update'])->name('usuarios.update');
     Route::delete('/usuarios/{usuarios}', [UsuariosController::class, 'destroy'])->name('usuarios.destroy');
+    //Proveedores
+    Route::get('/items', [ItemsController::class, 'index'])->name('items.index');
+    Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
+    Route::put('/items/{items}', [ItemsController::class, 'update'])->name('items.update');
 });
