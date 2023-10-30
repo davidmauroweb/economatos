@@ -56,15 +56,15 @@
                             <div class="col-md-6">
 
                                 <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="categoria">
-                                    <option value="Carnes" @if($l->categoria="Carnes") selected @endif >Carnes</option>
-                                    <option value="Láteos" @if($l->categoria="Láteos") selected @endif >Láteos</option>
-                                    <option value="Frutas y Verduras" @if($l->categoria="Frutas y Verduras") selected @endif >Frutas y Verduras</option>
-                                    <option value="Panadería" @if($l->categoria="Panadería") selected @endif >Panadería</option>
-                                    <option value="Secos" @if($l->categoria="Secos") selected @endif >Secos</option>
-                                    <option value="Limpieza" @if($l->categoria="Limpieza") selected @endif >Limpieza</option>
-                                    <option value="Higiene" @if($l->categoria="Higiene") selected @endif >Higiene</option>
-                                    <option value="Papelería" @if($l->categoria="Papelería") selected @endif >Papelería</option>
-                                    <option value="Otros" @if($l->categoria="Otros") selected @endif >Otros</option>
+                                    <option value="Carnes" @if($l->categoria=="Carnes") selected @endif >Carnes</option>
+                                    <option value="Láteos" @if($l->categoria=="Láteos") selected @endif >Láteos</option>
+                                    <option value="Frutas y Verduras" @if($l->categoria=="Frutas y Verduras") selected @endif >Frutas y Verduras</option>
+                                    <option value="Panadería" @if($l->categoria=="Panadería") selected @endif >Panadería</option>
+                                    <option value="Secos" @if($l->categoria=="Secos") selected @endif >Secos</option>
+                                    <option value="Limpieza" @if($l->categoria=="Limpieza") selected @endif >Limpieza</option>
+                                    <option value="Higiene" @if($l->categoria=="Higiene") selected @endif >Higiene</option>
+                                    <option value="Papelería" @if($l->categoria=="Papelería") selected @endif >Papelería</option>
+                                    <option value="Otros" @if($l->categoria=="Otros") selected @endif >Otros</option>
                                 </select>
 
                             </div>
