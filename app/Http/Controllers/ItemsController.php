@@ -16,8 +16,16 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        $lista = items::all()->sortBy('categoria');
-        return view ('items',['lista'=>$lista]);
+        $car=items::all()->where('categoria', '=','Carnes');
+        $lac=items::all()->where('categoria', '=','Lácteos');
+        $fyv=items::all()->where('categoria', '=','Frutas y Verduras');
+        $pan=items::all()->where('categoria', '=','Panadería');
+        $sec=items::all()->where('categoria', '=','Secos');
+        $lim=items::all()->where('categoria', '=','Limpieza');
+        $hig=items::all()->where('categoria', '=','Higiene');
+        $pap=items::all()->where('categoria', '=','Papelería');
+        $otr=items::all()->where('categoria', '=','Otros');
+        return view ('items',['car'=>$car,'lac'=>$lac,'fyv'=>$fyv,'pan'=>$pan,'sec'=>$sec,'lim'=>$lim,'hig'=>$hig,'pap'=>$pap,'otr'=>$otr]);
     }
 
     /**
@@ -36,6 +44,7 @@ class ItemsController extends Controller
         $agrego = new items();
         $agrego->nombItem = $request->nombItem;
         $agrego->categoria = $request->categoria;
+        $agrego->medida = $request->medida;
         $agrego->rafam = $request->rafam;
         $agrego->save();
         return redirect()->route('items.index')->with('mensajeOk',$request->name.' agregado correctamente');
@@ -44,9 +53,10 @@ class ItemsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(items $items)
+    public function show($cat)
     {
-        //
+        $res=items::all()->where('categoria', '=', $cat);
+        echo $res;
     }
 
     /**
@@ -65,6 +75,7 @@ class ItemsController extends Controller
         $upd = items::find($items->idItem);
         $upd->nombItem = $request->nombItem;
         $upd->categoria = $request->categoria;
+        $upd->medida = $request->medida;
         $upd->rafam = $request->rafam;
         $upd->save();
         return redirect()->route('items.index')->with('mensajeOk',$request->name.' actualizado correctamente');

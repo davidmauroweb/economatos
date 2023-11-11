@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\proveedores;
+use App\Models\ItemSolicitud;
 use Illuminate\Http\Request;
 
-
-class ProveedoresController extends Controller
+class ItemSolicitudController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($sol)
     {
-        $proveedores = Proveedores:: all();
-      // return json_encode($proveedores);
-      return view("proveedores",["proveedores"=> $proveedores]);
+        //
     }
 
     /**
@@ -37,7 +38,7 @@ class ProveedoresController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(proveedores $proveedores)
+    public function show(ItemSolicitud $itemSolicitud)
     {
         //
     }
@@ -45,7 +46,7 @@ class ProveedoresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(proveedores $proveedores)
+    public function edit(ItemSolicitud $itemSolicitud)
     {
         //
     }
@@ -53,7 +54,7 @@ class ProveedoresController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, proveedores $proveedores)
+    public function update(Request $request, ItemSolicitud $itemSolicitud)
     {
         //
     }
@@ -61,7 +62,7 @@ class ProveedoresController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(proveedores $proveedores)
+    public function destroy(ItemSolicitud $itemSolicitud)
     {
         //
     }

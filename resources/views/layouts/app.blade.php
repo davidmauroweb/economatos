@@ -31,6 +31,18 @@
     $( "#datepicker" ).datepicker();
     } );
     </script>
+    <script>
+function toggle(tableid){
+  var id = jQuery(tableid).data('id')
+  jQuery('.cat-'+id).toggle();
+}
+
+jQuery(document).ready(function(){
+  jQuery('.opciones').on('click', function(){
+    toggle(this)
+  })
+});
+    </script>
     <style>
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -62,13 +74,13 @@
                         @if(Auth::user()->adm)
                         <a class="navbar-brand" href="{{ url('/usuarios') }}"><ul><i class="bi bi-person-fill"></i> Economatos </ul></a>
                         <ul><i class="bi bi-box-seam-fill"></i> Proveedores  </ul>
-                        <ul><i class="bi bi-bag-fill"></i> Items  </ul>
+                        <a class="navbar-brand" href="{{ url('/items') }}"><ul><i class="bi bi-bag-fill"></i> Items  </ul></a>
                         <ul><i class="bi bi-list-check"></i> Suministros </ul>
                         @else
                         <ul><i class="bi bi-bag-fill"></i> Existencias</ul>
                         <ul><i class="bi bi-truck"></i> Recepción </ul>
                         <ul><i class="bi bi-activity"></i> Consumo </ul>
-                        <ul><i class="bi bi-list-check"></i> Suministros </ul>
+                        <a class="navbar-brand" href="{{ route('solicitudes.show',Auth::user()->id) }}"><ul><i class="bi bi-list-check"></i> Suministros </ul></a>
                         @endif
                     @endif
                     </ul>
