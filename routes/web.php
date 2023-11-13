@@ -35,6 +35,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/proveedores', [ProveedoresController::class,'index'])->name('proveedores.index');
     //Todas solicitudes que ve la muni
     Route::get('/solicitudes', [SolicitudController::class,'index'])->name('solicitudes.index');
+    Route::post('/solicitudes_proc/{sol}', [SolicitudController::class,'edit'])->name('solicitudes.proceso');
 });
 //Acceso de los economatos a SUS solicitudes
 Route::get('/solicitudes/{econ}', [SolicitudController::class,'show'])->name('solicitudes.show');

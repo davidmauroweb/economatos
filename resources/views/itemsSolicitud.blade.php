@@ -12,15 +12,20 @@
                             <tr>
                             <th>Item</th>
                             <th class="text-end">Cantidad</th>
+                            @if($sl->estado==0 and $sl->idEconomato==Auth::user()->id)
                             <th class="text-center"><i class="bi bi-pencil-square"></i></th>
                             <th class="text-center"><i class="bi bi-trash3-fill"></i></th>
+                            @else
+                            <th></th>
+                            <th></th>
+                            @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($is as $i)
                             <tr>
                                 <td>{{$i->nombItem}}</td>
-                                <td class="text-end">{{$i->cantidad}}</td>
+                                <td class="text-end">{{$i->cantidad}} {{$i->medida}}</td>
                                 <td class="text-center">
                                 @if($sl->estado==0 and $sl->idEconomato==Auth::user()->id)
                                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#i{{$i->idItemSolicitud}}"><i class="bi bi-pencil-square"></i></button>
@@ -69,7 +74,7 @@
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Elimnarl Item}}?')">
                                 <i class="bi bi-trash3-fill"></i>
                                 </button>
-                            </form>
+                                </form>
                                 @endif
                                 </td>
                             </tr>

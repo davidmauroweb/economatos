@@ -19,8 +19,9 @@ class SolicitudController extends Controller
     {
         //Traigo todas las solicitudes cerradas con los nombre de los economatos a las que pertenece
         $sol = DB::table('solicituds')->where('estado', 1)->join('users','users.id','solicituds.idEconomato')->get();
-        echo $sol;
-        //return view ('solicitud-muni',['sol'=>$sol]);
+        $cer = DB::table('solicituds')->where('estado', 2)->join('users','users.id','solicituds.idEconomato')->get();
+        //echo $sol;
+        return view ('solicitud-muni',['sol'=>$sol, 'cer'=>$cer]);
     }
 
     /**
@@ -59,9 +60,12 @@ class SolicitudController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(solicitud $solicitud)
+    public function edit(solicitud $sol)
     {
-        //
+        $upd = solicitud::find($sol->idSolicitud);
+        $upd->estado = 2;
+        $upd->save();
+        return redirect()->route('solicitudes.index')->with('mensajeOk',' Solicitud procesada correctamente');
     }
 
     /**

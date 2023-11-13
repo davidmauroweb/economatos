@@ -6,6 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Lista de Solicitudes de ')}}{{ Auth::user()->name }}
+                    <!-- Si $ab esta vacío es porque no hay ninguna solicitud abierta por lo tanto muestra el boton y formulario para agregar un nueva solicitud-->
                 @if($ab=="[]")
                 <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#mm">Agregar</button>
                 <div class="modal fade" id="mm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -55,6 +56,7 @@
                             @foreach($sol as $s)
                             <tr>
                                 <td>{{$s->idSolicitud}}</td>
+                                <!-- compara el campo estado para mostrar el texto del estado según su valor -->
                                 <td>@switch($s->estado)
                                     @case(0)
                                         Abierta

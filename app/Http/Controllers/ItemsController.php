@@ -41,13 +41,23 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        $agrego = new items();
-        $agrego->nombItem = $request->nombItem;
-        $agrego->categoria = $request->categoria;
-        $agrego->medida = $request->medida;
-        $agrego->rafam = $request->rafam;
-        $agrego->save();
-        return redirect()->route('items.index')->with('mensajeOk',$request->name.' agregado correctamente');
+        //Chequeo que no exista otro item con el mismo cogido de rafam
+        $chequeo = items::all()->where('rafam',$request->rafam)->first();
+        if (isset($chequeo->idItem)){
+            $tipo="mensajeNo";
+            $mensaje=" El código ".$request->rafam." de RAFAM lo tiene ".$chequeo->nombItem;
+        }
+        else{
+            $agrego = new items();
+            $agrego->nombItem = $request->nombItem;
+            $agrego->categoria = $request->categoria;
+            $agrego->medida = $request->medida;
+            $agrego->rafam = $request->rafam;
+            $agrego->save();
+            $tipo="mensajeOk";
+            $mensaje=$request->name." agregado correctamente";    
+        }
+        return redirect()->route('items.index')->with($tipo,$mensaje);
     }
 
     /**
@@ -72,13 +82,21 @@ class ItemsController extends Controller
      */
     public function update(Request $request, items $items)
     {
-        $upd = items::find($items->idItem);
-        $upd->nombItem = $request->nombItem;
-        $upd->categoria = $request->categoria;
-        $upd->medida = $request->medida;
-        $upd->rafam = $request->rafam;
-        $upd->save();
-        return redirect()->route('items.index')->with('mensajeOk',$request->name.' actualizado correctamente');
+        $chequeo = items::all()->where('rafam',$request->rafam)->first();
+        if (isset($chequeo->idItem)){
+            $tipo="mensajeNo";
+            $mensaje=" El código ".$request->rafam." de RAFAM lo tiene ".$chequeo->nombItem;
+        }else{
+            $upd = items::find($items->idItem);
+            $upd->nombItem = $request->nombItem;
+            $upd->categoria = $request->categoria;
+            $upd->medida = $request->medida;
+            $upd->rafam = $request->rafam;
+            $upd->save();
+            $tipo="mensajeOk";
+            $mensaje=$request->name." actualizado correctamente";
+        }
+        return redirect()->route('items.index')->with($tipo,$mensaje);
     }
 
     /**
