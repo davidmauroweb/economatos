@@ -33,11 +33,16 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('/items/{items}', [ItemsController::class, 'update'])->name('items.update');
     //proveedores
     Route::get('/proveedores', [ProveedoresController::class,'index'])->name('proveedores.index');
-    //Solicitudes
+    //Todas solicitudes que ve la muni
     Route::get('/solicitudes', [SolicitudController::class,'index'])->name('solicitudes.index');
 });
-//Solicitudes
+//Acceso de los economatos a SUS solicitudes
 Route::get('/solicitudes/{econ}', [SolicitudController::class,'show'])->name('solicitudes.show');
 Route::post('/solicitudes', [SolicitudController::class,'store'])->name('solicitudes.store');
 Route::put('/solicitudes/{sol}', [SolicitudController::class, 'update'])->name('solicitudes.update');
 Route::delete('/solicitudes/{sol}', [SolicitudController::class,'destroy'])->name('solicitudes.destroy');
+//Items en solicitudes
+Route::get('/itemsolicitud/{sol}', [ItemSolicitudController::class,'index'])->name('itemsolicitud.index');
+Route::post('/itemsolicitud', [ItemSolicitudController::class,'store'])->name('itemsolicitud.store');
+Route::put('/itemsolicitud/{item}', [ItemSolicitudController::class, 'update'])->name('itemsolicitud.update');
+Route::delete('/itemsolicitud/{item}', [ItemSolicitudController::class,'destroy'])->name('itemsolicitud.destroy');

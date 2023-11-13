@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
                         <a class="navbar-brand" href="{{ url('/usuarios') }}"><ul><i class="bi bi-person-fill"></i> Economatos </ul></a>
                         <ul><i class="bi bi-box-seam-fill"></i> Proveedores  </ul>
                         <a class="navbar-brand" href="{{ url('/items') }}"><ul><i class="bi bi-bag-fill"></i> Items  </ul></a>
-                        <ul><i class="bi bi-list-check"></i> Suministros </ul>
+                        <a class="navbar-brand" href="{{ url('/solicitudes') }}"><ul><i class="bi bi-list-check"></i> Suministros </ul></a>
                         @else
                         <ul><i class="bi bi-bag-fill"></i> Existencias</ul>
                         <ul><i class="bi bi-truck"></i> Recepción </ul>
@@ -120,19 +120,19 @@ jQuery(document).ready(function(){
 @if (session('mensajeOk'))
 <div class="alert alert-success px-5 mx-5" role="alert" id="m">
 {{session('mensajeOk')}}
-<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+<a href="#" class="close navbar-brand" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
 </div>
 @endif
 @if (session('mensajeNo'))
 <div class="alert alert-warning px-5 mx-5" role="alert" id="m">
 {{session('mensajeNo')}}
-<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+<a href="#" class="close navbar-brand" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
 </div>
 @endif
 @if (session('messages'))
 <div class="alert alert-success px-5 mx-5" role="alert" id="m">
 {{session('messages')}}
-<a href="#" class="close" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
+<a href="#" class="close navbar-brand" data-dismiss="alert" aria-label="close"><i class="bi bi-x-circle"></i></a>
 </div>
 @endif
 

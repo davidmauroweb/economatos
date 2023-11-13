@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\solicitud;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SolicitudController extends Controller
 {
@@ -16,7 +17,10 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        //
+        //Traigo todas las solicitudes cerradas con los nombre de los economatos a las que pertenece
+        $sol = DB::table('solicituds')->where('estado', 1)->join('users','users.id','solicituds.idEconomato')->get();
+        echo $sol;
+        //return view ('solicitud-muni',['sol'=>$sol]);
     }
 
     /**
@@ -45,7 +49,9 @@ class SolicitudController extends Controller
      */
     public function show($econo)
     {
+        //Trae solamente las solicitudes del economato que consulta en de mas nuevas a mas antiguas.
         $sol = solicitud::all()->where('idEconomato', $econo)->sortByDesc('idSolicitud');
+        //Determino si hay solicitudes pendientes de cierre para no abrir otra sin cerrar la anterior.
         $abierta = solicitud::all()->where('idEconomato', $econo)->where('estado',0);
         return view ('solicitud',['sol'=>$sol, 'ab'=>$abierta]);
     }
@@ -67,7 +73,7 @@ class SolicitudController extends Controller
         $upd->descripcion = $request->descripcion;
         $upd->estado = $request->estado;
         $upd->save();
-        return redirect()->route('items.index')->with('mensajeOk',' Solicitud actualizada correctamente');
+        return redirect()->route('solicitudes.show',$sol->idEconomato)->with('mensajeOk',' Solicitud actualizada correctamente');
     }
 
     /**

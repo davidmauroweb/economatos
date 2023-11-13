@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integerIncrements('idItemSolicitud');
             $table->unsignedInteger('idSolicitud');
             $table->unsignedInteger('idItem');
-            $table->unsignedTinyInteger('cantidad');
+            $table->unsignedMediumInteger('cantidad');
             $table->foreign('idSolicitud')->references('idSolicitud')->on('solicituds');
             $table->foreign('idItem')->references('idItem')->on('items');
             $table->timestamps();
