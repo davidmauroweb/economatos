@@ -31,7 +31,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/items/{cat}',[ItemsController::class, 'show'])->name('items.show');
     Route::post('/items', [ItemsController::class, 'store'])->name('items.store');
     Route::put('/items/{items}', [ItemsController::class, 'update'])->name('items.update');
-    //proveedores
+    //proveedores0
     Route::get('/proveedores', [ProveedoresController::class,'index'])->name('proveedores.index');
     //Todas solicitudes que ve la muni
     Route::get('/solicitudes', [SolicitudController::class,'index'])->name('solicitudes.index');

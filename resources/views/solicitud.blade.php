@@ -54,7 +54,19 @@
                         </thead>
                         <tbody>
                             @foreach($sol as $s)
-                            <tr>
+                            <tr class="
+                            @switch($s->estado)
+                                    @case(0)
+                                    table-success
+                                        @break
+                                    @case(1)
+                                    table-warning
+                                        @break
+                                    @case(2)
+                                    table-secondary
+                                        @break
+                                    @endswitch
+                            ">
                                 <td>{{$s->idSolicitud}}</td>
                                 <!-- compara el campo estado para mostrar el texto del estado según su valor -->
                                 <td>@switch($s->estado)

@@ -35,6 +35,7 @@ class UsuariosController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->password==$request->password_confirmation){
         $agrego = new usuarios();
         $agrego->name = $request->name;
         $agrego->email = $request->email;
@@ -42,7 +43,13 @@ class UsuariosController extends Controller
         $agrego->capita = $request->capita;
         $agrego->adm = $request->adm;
         $agrego->save();
-        return redirect()->route('usuarios.index')->with('mensajeOk',$request->name.' agregado correctamente');
+        $err = 'mensajeOk';
+        $msj = $request->name.' agregado correctamente';
+    }else{
+        $err = 'mensajeNo';
+        $msj = ' Las Claves no coinciden';
+    }
+        return redirect()->route('usuarios.index')->with($err,$msj);
     }
 
     /**

@@ -17,11 +17,10 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        //Traigo todas las solicitudes cerradas con los nombre de los economatos a las que pertenece
-        $sol = DB::table('solicituds')->where('estado', 1)->join('users','users.id','solicituds.idEconomato')->get();
-        $cer = DB::table('solicituds')->where('estado', 2)->join('users','users.id','solicituds.idEconomato')->get();
+        //Traigo todas las solicitudes con los nombre de los economatos a las que pertenece
+        $sol = DB::table('solicituds')->where('estado','>',0)->orderBy('estado')->orderBy('solicituds.updated_at')->join('users','users.id','solicituds.idEconomato')->get();
         //echo $sol;
-        return view ('solicitud-muni',['sol'=>$sol, 'cer'=>$cer]);
+        return view ('solicitud-muni',['sol'=>$sol]);
     }
 
     /**
@@ -52,20 +51,21 @@ class SolicitudController extends Controller
     {
         //Trae solamente las solicitudes del economato que consulta en de mas nuevas a mas antiguas.
         $sol = solicitud::all()->where('idEconomato', $econo)->sortByDesc('idSolicitud');
-        //Determino si hay solicitudes pendientes de cierre para no abrir otra sin cerrar la anterior.
-        $abierta = solicitud::all()->where('idEconomato', $econo)->where('estado',0);
+        //Determino si hay solicitudes pendientes de cierre 0 o cerradas y no procesadas 1 para no abrir otra sin cerrar la anterior o que queden pendientes de ser procesadas.
+        $abierta = solicitud::all()->where('idEconomato', $econo)->where('estado','<',2);
         return view ('solicitud',['sol'=>$sol, 'ab'=>$abierta]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(solicitud $sol)
+    public function edit(Request $request, solicitud $sol)
     {
         $upd = solicitud::find($sol->idSolicitud);
         $upd->estado = 2;
         $upd->save();
         return redirect()->route('solicitudes.index')->with('mensajeOk',' Solicitud procesada correctamente');
+        //echo $sol;
     }
 
     /**

@@ -5,7 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Lista de items de para la solicitud #') }}{{$sl->idSolicitud}} @if($sl->estado==0) ABIERTA @else CERRADA @endif</div>
+                <div class="card-header">{{ __('Lista de items de para la solicitud #') }}{{$sl->idSolicitud}} 
+                @switch($sl->estado)
+                                    @case(0)
+                                        Abierta
+                                        @break
+                                    @case(1)
+                                        Cerrada
+                                        @break
+                                    @case(2)
+                                        Procesada
+                                        @break
+                                    @endswitch
+                </div>
                 <div class="card-body">
                     <table class="table table-sm table-hover">
                         <thead>
