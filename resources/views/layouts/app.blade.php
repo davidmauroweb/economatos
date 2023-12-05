@@ -72,7 +72,7 @@ jQuery(document).ready(function(){
                     <ul class="navbar-nav me-auto">
                     @if(isset(Auth::user()->adm))
                         @if(Auth::user()->adm)
-                        <a class="navbar-brand" href="{{ url('/usuarios') }}"><ul><i class="bi bi-person-fill"></i> Economatos </ul></a>
+                        <a class="navbar-brand" href="{{ url('/usuarios') }}"><ul><i class="bi bi-person-fill"></i> Usuarios </ul></a>
                         <ul><i class="bi bi-box-seam-fill"></i> Proveedores  </ul>
                         <a class="navbar-brand" href="{{ url('/items') }}"><ul><i class="bi bi-bag-fill"></i> Items  </ul></a>
                         <a class="navbar-brand" href="{{ url('/solicitudes') }}"><ul><i class="bi bi-list-check"></i> Suministros </ul></a>
