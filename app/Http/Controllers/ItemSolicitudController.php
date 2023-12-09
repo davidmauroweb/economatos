@@ -76,11 +76,23 @@ class ItemSolicitudController extends Controller
      */
     public function update(Request $request, ItemSolicitud $item)
     {
+        //Chequeo si Existe el item no exista en esa solicitud
+        $chequeo =  ItemSolicitud::all()->where('idSolicitud',$item->idSolicitud)->where('idItem', $request->idItem)->where('idItemSolicitud','!=', $item->idItemSolicitud)->first();
+ 
+         if (isset($chequeo->idItem)){
+            $tipo="mensajeNo";
+            $mensaje="Existe el item en esta solicitud";
+        }
+        else{
         $upd = ItemSolicitud::find($item->idItemSolicitud);
         $upd->idItem = $request->idItem;
         $upd->cantidad = $request->cantidad;
         $upd->save();
-        return redirect()->route('itemsolicitud.index',$item->idSolicitud)->with('mensajeOk',' Solicitud actualizada correctamente');
+        $tipo="mensajeOk";
+        $mensaje="Solicitud actualizada correctamente";
+        }
+        return redirect()->route('itemsolicitud.index',$item->idSolicitud)->with($tipo,$mensaje);
+
        
     }
 

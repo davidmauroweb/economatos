@@ -12,7 +12,7 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Mail</th>
-                        <th>Capita</th>
+                        <th>Cápita</th>
                         <th><i class="bi bi-bag-fill"></i></th>
                         <th><i class="bi bi-list-check"></i></th>
                         <th><i class="bi bi-pencil-square"></i></th>

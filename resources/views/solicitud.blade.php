@@ -45,7 +45,7 @@
                         <thead>
                             <th>#</th>
                             <th>Estado</th>
-                            <th>Descripción</th>
+                            <th>Detalle</th>
                             <th>Fecha</th>
                             <th>Modificación</th>
                             <th><i class="bi bi-pencil-square"></i></th>

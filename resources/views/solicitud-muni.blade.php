@@ -12,7 +12,7 @@
                             <th>Estado</th>
                             <th>Economato</th>
                             <th>Descripcion</th>
-                            <th>Cierre</th>
+                            <th>Fecha</th>
                             <th>Detalle</th>
                             <th>Procesar</th>
                         </thead>
@@ -32,7 +32,7 @@
                                     @endswitch</td>
                                 <td>{{$s->name}}</td>
                                 <td>{{$s->descripcion}}</td>
-                                <td>{{$s->updated_at}}</td>
+                                <td>{{date("d/m/Y", strtotime($s->updated_at))}}</td>
                                 <td class="text-center">
                                     <a class="navbar-brand" href="{{ route('itemsolicitud.index', $s->idSolicitud) }}"><button type="submit" class="btn btn-success btn-sm"><i class="bi bi-list-columns"></i></button></a>
                                 </td>

@@ -82,7 +82,7 @@ class ItemsController extends Controller
      */
     public function update(Request $request, items $items)
     {
-        $chequeo = items::all()->where('rafam',$request->rafam)->first();
+        $chequeo = items::all()->where('rafam',$request->rafam)->where('idItem', "!=", $items->idItem)->first();
         if (isset($chequeo->idItem)){
             $tipo="mensajeNo";
             $mensaje=" El código ".$request->rafam." de RAFAM lo tiene ".$chequeo->nombItem;

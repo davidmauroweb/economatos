@@ -65,7 +65,7 @@ class SolicitudController extends Controller
         $upd->estado = 2;
         $upd->save();
         return redirect()->route('solicitudes.index')->with('mensajeOk',' Solicitud procesada correctamente');
-        //echo $sol;
+        
     }
 
     /**

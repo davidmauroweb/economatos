@@ -5,16 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Lista de items de para la solicitud #') }}{{$sl->idSolicitud}} 
+                <div class="card-header">{{ __('Lista #') }}{{$sl->idSolicitud}} {{$sl->descripcion}} // Fecha: {{$sl->updated_at->format('d/m/Y')}}
                 @switch($sl->estado)
                                     @case(0)
-                                        Abierta
+                                        <b>Abierta</b>
                                         @break
                                     @case(1)
-                                        Cerrada
+                                        <b>Cerrada</b>
                                         @break
                                     @case(2)
-                                        Procesada
+                                        <b>Procesada</b>
                                         @break
                                     @endswitch
                 </div>
